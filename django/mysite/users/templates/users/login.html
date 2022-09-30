@@ -1,0 +1,38 @@
+{% extends 'food/base.html' %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <!-- adding offset to relocate the form to center -->
+        <div class="col-md-4 offset-md-4">    
+            <div class="card">
+                <div class="card-header text-white bg-info">
+                    <div class="card-title">
+                        Login
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <!-- {{ form }} earlier method to load the username and password--> 
+                        <!-- adopting the new method to customize each field seperately by running for loop -->
+                        {% for field in form %}
+                        <div class="form-group">
+                            <!-- such as username,password-- -->
+                            {{ field.name }}
+                            <br>
+                            <!-- to enter the data -->
+                            {{ field }}
+                        </div>
+                        {% endfor %}
+                        <br>
+                        <button class="btn btn-warning" type="submit">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock  %}
